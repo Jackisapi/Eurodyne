@@ -11,4 +11,3 @@ def trainer():
     except Exception as e:
         print(f"ERROR: \n {e}")
 
-trainer()
