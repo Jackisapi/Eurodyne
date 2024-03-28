@@ -1,0 +1,36 @@
+Eurodyne (initially gpt4all-cli-DEV)
+An unofficial CLI Writen by yours truly Jackisapi. I hope to use this for a possible senior project But Worst case scenario i made something kinda cool. Any Feedback is apriciated.
+
+This is the dev fork meaning that things will generally be less stable however more bleading edge,
+
+This is also the build where i save my half done stuff so expect stuff to break
+
+How2 GPT Firstly to install clone the project at the following link
+
+https://github.com/Jackisapi/gpt4all-cli
+
+once cloned assuming you have python3 and pip installed run the following command
+
+pip install -r requirements.txt
+
+This installs all of the modules used by this program and at there correct versions
+
+After this you simply run python3 (sometimes just python) main.py (or on windows sometimes its py or py3)
+
+Now that the program is installed lets go into how it works
+
+type anything that isn't an official command to queue a task to the model
+
+ls - lists all the current compatible models and data relating to them
+
+ch - changes the model you are currently on (ls is usable still)
+
+hw - prints all the hardware compute options then takes an input to change what hardware is being used for compute if no correct input is made it will simply default to what it was originally
+
+exit - allows you to exit the program
+
+INDEV: Starting to store configuration in conf.yaml with a basic editor at the moment only default model and compute device use this
+
+conf: opens the config tool from there you will be asked what you want to change it to
+
+CHANGES THAT NEED MADE Right Now Compute just passes whatever string you add into it. Model Doesnt as I was able to reuse some code. NOTE these changes are set in the file NOT in memory. For temporary changes please use ch or hw
