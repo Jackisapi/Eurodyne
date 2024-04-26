@@ -1,13 +1,23 @@
+import time
+
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, TrainingArguments, Trainer
 from datasets import load_dataset
+import sys
+from soulkiller import soul_lib
+
+sys.path.insert(0, '/home/jack/Documents/code/git/Eurodyne/soulkiller/')
 
 
 class Ripper:
     def __init__(self, model_tag, data_tag, output_dir):
         # Checks for a cuda compatible card if found will use else cpu
 
+        self.trainer = None
+        self.training_args = None
+        self.tokenized_data = None
         self.device = torch.device(device='cuda' if torch.cuda.is_available() else 'cpu')
+        self.data_tag = data_tag
 
         # Downloads the tokenizer for the model
 
@@ -30,9 +40,22 @@ class Ripper:
             self.model.resize_token_embeddings(len(self.tokenizer))
 
     def prep_data(self):
+        edit_data = input("Would you like to open your data in pandas? \n ")
+        if edit_data.upper() == 'Y':
+            try:
+                pd_data = soul_lib.data_2_pd(self.data_tag, 'train')
+                print(pd_data)
+                while True:
+                    time.sleep(1)
+            except KeyboardInterrupt:
+                pass
+
         def cleaner(examples):
             # Tokenizes the data sentences allows them to go to max length and returns a pytorch tensor
-            inputs = self.tokenizer(examples['text'], padding='max_length', truncation=True, return_tensors='pt')
+            dict_data = dict(self.data['train'])
+            dict_keys = list(dict_data.keys())
+            print(dict_keys)
+            inputs = self.tokenizer(examples[dict_keys[0]], padding='max_length', truncation=True, return_tensors='pt')
             inputs['labels'] = inputs['input_ids'].clone()
             return inputs
 

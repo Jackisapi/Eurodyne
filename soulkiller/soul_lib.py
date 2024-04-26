@@ -2,7 +2,6 @@ from datasets import load_dataset
 import threading
 import pandas as pd
 
-
 # Creates a new column with the data you want as a DF and appends to another DF
 def process_column(data, phase, column, result):
     new_data = pd.DataFrame(data[phase][column], columns=[column])
@@ -38,7 +37,6 @@ def data_2_pd(tag, phase):
 
     return df
 
+def test():
+    print('up')
 
-data = data_2_pd('imdb', 'train')
-
-print(data)
