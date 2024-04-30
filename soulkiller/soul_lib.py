@@ -1,6 +1,8 @@
-from datasets import load_dataset
 import threading
+
 import pandas as pd
+from datasets import load_dataset
+
 
 # Creates a new column with the data you want as a DF and appends to another DF
 def process_column(data, phase, column, result):
@@ -9,6 +11,7 @@ def process_column(data, phase, column, result):
 
 
 def data_2_pd(tag, phase):
+    # Loads a dataset from Hugging Face
     # Loads a dataset from Hugging Face
     data = load_dataset(tag)
     # Converts the features of a  dataset to a list for EZ use
@@ -36,7 +39,3 @@ def data_2_pd(tag, phase):
     df = pd.concat(result, axis=1)
 
     return df
-
-def test():
-    print('up')
-

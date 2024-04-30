@@ -1,18 +1,21 @@
+import sys
 import time
 
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM, TrainingArguments, Trainer
 from datasets import load_dataset
-import sys
+from transformers import AutoTokenizer, AutoModelForCausalLM, TrainingArguments, Trainer
+
 from soulkiller import soul_lib
 
 sys.path.insert(0, '/home/jack/Documents/code/git/Eurodyne/soulkiller/')
 
 
 class Ripper:
-    def __init__(self, model_tag, data_tag, output_dir):
+    def __init__(self, model_tag, data_tag, output_dir, args=False):
         # Checks for a cuda compatible card if found will use else cpu
 
+        if args:
+            self.section = str(args)
         self.trainer = None
         self.training_args = None
         self.tokenized_data = None
@@ -32,8 +35,10 @@ class Ripper:
         self.output_dir = output_dir
 
         # loads data and checks for pad tokens if not found will add
-
-        self.data = load_dataset(data_tag)
+        if args:
+            self.data = load_dataset(data_tag, self.section, trust_remote_code=True)
+        else:
+            self.data = load_dataset(data_tag, trust_remote_code=True)
         # Checks for padding tokens if not found will add some
         if self.tokenizer.pad_token is None:
             self.tokenizer.add_special_tokens({'pad_token': '[PAD]'})
