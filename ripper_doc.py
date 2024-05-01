@@ -58,7 +58,6 @@ class Ripper:
         def cleaner(examples):
             # Tokenizes the data sentences allows them to go to max length and returns a pytorch tensor
             dict_data = self.data['train'].to_dict()
-            print(dict_data)
             dict_keys = list(dict_data.keys())
             inputs = self.tokenizer(examples[dict_keys[0]], padding='max_length', truncation=True, return_tensors='pt')
             inputs['labels'] = inputs['input_ids'].clone()
