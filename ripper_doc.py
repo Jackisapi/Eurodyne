@@ -57,7 +57,7 @@ class Ripper:
 
         def cleaner(examples):
             # Tokenizes the data sentences allows them to go to max length and returns a pytorch tensor
-            dict_data = dict(self.data['train'])
+            dict_data = self.data['train'].to_dict()
             print(dict_data)
             dict_keys = list(dict_data.keys())
             inputs = self.tokenizer(examples[dict_keys[0]], padding='max_length', truncation=True, return_tensors='pt')
@@ -89,6 +89,3 @@ class Ripper:
         return self.device, self.model, self.tokenizer
 
 
-ripper = Ripper('gpt2', 'scientific_papers', '/home/jack/Desktop/test/', args='pubmed')
-
-print(ripper.prep_data())
