@@ -1,13 +1,13 @@
 import sys
 import time
-
+from  os import getcwd
 import torch
 from datasets import load_dataset
 from transformers import AutoTokenizer, AutoModelForCausalLM, TrainingArguments, Trainer
 
 from soulkiller import soul_lib
 
-sys.path.insert(0, '/home/jack/Documents/code/git/Eurodyne/soulkiller/')
+sys.path.insert(0, getcwd() +'/soulkiller/')
 
 
 class Ripper:
