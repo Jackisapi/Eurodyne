@@ -12,7 +12,6 @@ if __name__ == '__main__':
         args = parser.parse_args()
         args_dict = vars(args)
         is_sec = args_dict['entry']
-        print(is_sec)
         if args_dict['train']:
             ripper = Ripper(args_dict['model'], args_dict['data'], args_dict['output'], args=is_sec)
             ripper.prep_data()
