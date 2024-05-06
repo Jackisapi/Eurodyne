@@ -71,7 +71,7 @@ class Ripper:
             per_device_train_batch_size=4,
             per_device_eval_batch_size=4,
             gradient_accumulation_steps=8,
-            output_dir="C:/Users/jack/Desktop/imdb_model/"
+            output_dir="checkpoints"
         )
 
         self.trainer = Trainer(
