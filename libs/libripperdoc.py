@@ -1,13 +1,13 @@
 import sys
 import time
-from  os import getcwd
+from os import getcwd
 import torch
 from datasets import load_dataset
 from transformers import AutoTokenizer, AutoModelForCausalLM, TrainingArguments, Trainer
 
-from soulkiller import soul_lib
+from libs import libsoulkiller
 
-sys.path.insert(0, getcwd() +'/soulkiller/')
+sys.path.insert(0, getcwd() + '/libs/')
 
 
 class Ripper:
@@ -48,7 +48,7 @@ class Ripper:
         edit_data = input("Would you like to open your data in pandas? \n ")
         if edit_data.upper() == 'Y':
             try:
-                pd_data = soul_lib.data_2_pd(self.data_tag, 'train')
+                pd_data = libsoulkiller.data_2_pd(self.data_tag, 'train')
                 print(pd_data)
                 while True:
                     time.sleep(1)
@@ -86,5 +86,3 @@ class Ripper:
 
     def debug_mode(self):
         return self.device, self.model, self.tokenizer
-
-

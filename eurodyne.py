@@ -1,5 +1,5 @@
 import argparse
-from ripper_doc import Ripper
+from libs.libripperdoc import Ripper
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 
@@ -24,7 +24,7 @@ if __name__ == '__main__':
         is_sec = args_dict['entry']
         # if you are training a model
         if args_dict['train']:
-            # loads ripper_doc.py and initilizes
+            # loads libripperdoc.py and initilizes
             ripper = Ripper(args_dict['model'], args_dict['data'], args_dict['output'], args=is_sec)
             # ripper doc will parse and prep the data for the model
             ripper.prep_data()

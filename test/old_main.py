@@ -1,10 +1,10 @@
-from modular_function_main_function import *
-from text_function import txt_reader
+from libs.libgpt4all import *
+from libs.text_function import txt_reader
 from gpt4all import GPT4All
-from yaml_func import *
-from trainer import trainer
+from libs.libyaml import *
+from libs.libtrainer import trainer
 
-# To See all the functions for this program please look at modular_function_main_function.py and text_function.py
+# To See all the functions for this program please look at libgpt4all.py and text_function.py
 
 
 if __name__ == "__main__":
@@ -37,7 +37,7 @@ if __name__ == "__main__":
             elif prompt == 'exit':
                 exit_prompt()
             elif prompt == 'help':
-                txt_reader('help')
+                txt_reader('../help')
             elif prompt == 'config':
                 cli_conf = config_edit()
                 # Launches the config editor`

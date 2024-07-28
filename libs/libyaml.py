@@ -1,5 +1,5 @@
 import yaml
-from modular_function_main_function import change_model
+from libs.libgpt4all import change_model
 
 def yaml_conf(file='conf.yaml'):
     with open(file, 'r') as file:
